@@ -7,6 +7,7 @@ import RecentSubmission from './RecentSubmission';
 const Game = () => {
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [submissions, setSubmissions] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -17,14 +18,16 @@ const Game = () => {
   }).join(' ');
 
   const addSubmission = (submission) => {
-    const newSubmissions = [...submissions]
+    const newSubmissions = [...submissions];
 
-    newSubmissions.push(submission)
+    newSubmissions.push(submission);
+    setSubmissions(newSubmissions);
 
-    setSubmissions(newSubmissions)
-    
-    setCurrentPlayer(currentPlayer + 1)
+    setCurrentPlayer(currentPlayer + 1);
+    // console.log(newSubmissions);
   }
+
+  const mostRecentSubmission = submissions[submissions.length - 1];
 
   return (
     <div className="Game">
@@ -38,7 +41,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission submission={mostRecentSubmission}/>
 
       <PlayerSubmissionForm index={currentPlayer} sendSubmission={addSubmission} fields={FIELDS}/>
 
@@ -53,28 +56,28 @@ const FIELDS = [
   'The',
   {
     key: 'adj1',
-    placeholder: 'adjective',
+    placeholder: 'adjective1',
   },
   {
     key: 'noun1',
-    placeholder: 'noun',
+    placeholder: 'noun1',
   },
   {
-    key: 'adv',
-    placeholder: 'adverb',
+    key: 'adverb1',
+    placeholder: 'adverb1',
   },
   {
-    key: 'verb',
-    placeholder: 'verb',
+    key: 'verb1',
+    placeholder: 'verb1',
   },
   'the',
   {
     key: 'adj2',
-    placeholder: 'adjective',
+    placeholder: 'adjective2',
   },
   {
     key: 'noun2',
-    placeholder: 'noun',
+    placeholder: 'noun2',
   },
   '.',
 ];
