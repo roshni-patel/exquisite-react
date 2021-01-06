@@ -12,6 +12,12 @@ const generateFields = () => ({
   noun2: ''
 });
 
+// const generateFieldsHelper = (fields) => {
+//   return fields.map((field) => {
+//     field[key] = '',
+//   })
+// };
+
 const buildInputs = (fields, onFormFieldChange, formFields) => { 
   return fields.map((field) => {
     if (field.key) {
