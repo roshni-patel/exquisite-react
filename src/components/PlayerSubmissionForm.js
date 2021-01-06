@@ -3,15 +3,6 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
-// const generateFields = () => ({
-//   adj1: '',
-//   noun1: '',
-//   adverb1: '',
-//   verb1: '',
-//   adj2: '',
-//   noun2: ''
-// });
-
 const generateFieldsHelper = (fields) => {
   const newFields = {}
   for (const field of fields) {
@@ -61,7 +52,6 @@ const PlayerSubmissionForm = (props) => {
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    // console.log(formFields);
     props.sendSubmission(formFields);
 
     setFormFields(generateFieldsHelper(props.fields));

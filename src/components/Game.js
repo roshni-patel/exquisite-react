@@ -17,10 +17,10 @@ const Game = () => {
     }
   }).join(' ');
 
-  const generateSentence = (submissions) => { 
+  const generateSentence = (submission) => { 
     return FIELDS.map((field) => {
       if (field.key) {
-        return submissions[field.key];
+        return submission[field.key];
       } else {
         return field;
       }
@@ -34,7 +34,6 @@ const Game = () => {
     setSubmissions(newSubmissions);
 
     setCurrentPlayer(currentPlayer + 1);
-    // console.log(newSubmissions);
   }
 
   const mostRecentSubmission = submissions[submissions.length - 1];
