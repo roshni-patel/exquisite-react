@@ -3,20 +3,24 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
-const generateFields = () => ({
-  adj1: '',
-  noun1: '',
-  adverb1: '',
-  verb1: '',
-  adj2: '',
-  noun2: ''
-});
+// const generateFields = () => ({
+//   adj1: '',
+//   noun1: '',
+//   adverb1: '',
+//   verb1: '',
+//   adj2: '',
+//   noun2: ''
+// });
 
-// const generateFieldsHelper = (fields) => {
-//   return fields.map((field) => {
-//     field[key] = '',
-//   })
-// };
+const generateFieldsHelper = (fields) => {
+  const newFields = {}
+  for (const field of fields) {
+    if (field.key) {
+      newFields[field.key] = '';
+    }
+  }
+  return newFields;
+};
 
 const buildInputs = (fields, onFormFieldChange, formFields) => { 
   return fields.map((field) => {
@@ -28,7 +32,9 @@ const buildInputs = (fields, onFormFieldChange, formFields) => {
       name={field.key}
       type="text"
       value={formFields[field.key]}
-      onChange={onFormFieldChange} />
+      onChange={onFormFieldChange}
+      className={(formFields[field.key]) ? '' : 'PlayerSubmissionFormt__input--invalid' }
+      />
       )
     } else {
       return <p key={field}>{field}</p>
@@ -38,7 +44,7 @@ const buildInputs = (fields, onFormFieldChange, formFields) => {
 }
 
 const PlayerSubmissionForm = (props) => {
-  const [formFields, setFormFields] = useState(generateFields()); 
+  const [formFields, setFormFields] = useState(generateFieldsHelper(props.fields)); 
 
   const onFormFieldChange = (event) => {
     const fieldName = event.target.name;
@@ -58,7 +64,7 @@ const PlayerSubmissionForm = (props) => {
     // console.log(formFields);
     props.sendSubmission(formFields);
 
-    setFormFields(generateFields());
+    setFormFields(generateFieldsHelper(props.fields));
   }
 
   return (

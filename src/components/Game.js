@@ -17,10 +17,20 @@ const Game = () => {
     }
   }).join(' ');
 
+  const generateSentence = (submissions) => { 
+    return FIELDS.map((field) => {
+      if (field.key) {
+        return submissions[field.key];
+      } else {
+        return field;
+      }
+    }).join(' ');
+  }
+
   const addSubmission = (submission) => {
     const newSubmissions = [...submissions];
 
-    newSubmissions.push(submission);
+    newSubmissions.push(generateSentence(submission));
     setSubmissions(newSubmissions);
 
     setCurrentPlayer(currentPlayer + 1);
