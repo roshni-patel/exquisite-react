@@ -56,28 +56,28 @@ const FIELDS = [
   'The',
   {
     key: 'adj1',
-    placeholder: 'adjective1',
+    placeholder: 'adjective',
   },
   {
     key: 'noun1',
-    placeholder: 'noun1',
+    placeholder: 'noun',
   },
   {
-    key: 'adverb1',
-    placeholder: 'adverb1',
+    key: 'adv',
+    placeholder: 'adverb',
   },
   {
-    key: 'verb1',
-    placeholder: 'verb1',
+    key: 'verb',
+    placeholder: 'verb',
   },
   'the',
   {
     key: 'adj2',
-    placeholder: 'adjective2',
+    placeholder: 'adjective',
   },
   {
     key: 'noun2',
-    placeholder: 'noun2',
+    placeholder: 'noun',
   },
   '.',
 ];
